@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: "Arial", sans-serif;
 }
 
 body {
@@ -10,18 +10,31 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #260101;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
 }
 
 .container {
     width: 100%;
     max-width: 1200px;
-    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .gallery-slider {
     width: 100%;
     padding: 20px 0;
+    position: relative;
+}
+
+.swiper-wrapper {
+    align-items: center;
 }
 
 .swiper-slide {
@@ -29,6 +42,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 300px;
+    transition: transform 0.3s ease;
 }
 
 .gallery-image {
@@ -36,55 +50,81 @@ body {
     height: 100%;
     max-width: 400px;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.swiper-slide-active .gallery-image {
+    transform: scale(1.05);
 }
 
 /* Стили для кнопок навигации */
 .swiper-button-prev,
 .swiper-button-next {
-    color: #d9b991;
-    background: rgba(0, 0, 0, 0.5);
-    width: 50px;
-    height: 50px;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    margin-top: -25px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-top: -30px;
+    transition: all 0.3s ease;
 }
 
 .swiper-button-prev:after,
 .swiper-button-next:after {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.swiper-button-prev {
+    left: 20px;
+}
+
+.swiper-button-next {
+    right: 20px;
 }
 
 /* Стили для пагинации */
 .swiper-pagination {
     position: relative;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    background: #d9b991;
+    width: 16px;
+    height: 16px;
+    background: white;
     opacity: 0.5;
-    margin: 0 6px;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .swiper-pagination-bullet-active {
     opacity: 1;
-    background: #5372f0;
+    background: #FFD700;
+    transform: scale(1.2);
+    border-color: white;
 }
 
-/* Адаптивность */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-    .container {
+    body {
         padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
     }
     
     .swiper-slide {
@@ -93,13 +133,45 @@ body {
     
     .swiper-button-prev,
     .swiper-button-next {
-        width: 40px;
-        height: 40px;
-        margin-top: -20px;
+        width: 50px;
+        height: 50px;
+        margin-top: -25px;
     }
     
     .swiper-button-prev:after,
     .swiper-button-next:after {
-        font-size: 16px;
+        font-size: 20px;
+    }
+    
+    .swiper-button-prev {
+        left: 10px;
+    }
+    
+    .swiper-button-next {
+        right: 10px;
+    }
+    
+    .swiper-pagination {
+        margin-top: 30px;
+    }
+    
+    .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        margin: 0 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .swiper-slide {
+        height: 200px;
+    }
+    
+    .gallery-image {
+        max-width: 300px;
     }
 }
